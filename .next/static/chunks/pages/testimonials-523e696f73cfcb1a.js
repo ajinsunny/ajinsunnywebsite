@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[446],{5207:function(n,t,u){(window.__NEXT_P=window.__NEXT_P||[]).push(["/testimonials",function(){return u(9378)}])},9378:function(n,t,u){"use strict";u.r(t);let _=()=>{};t.default=_}},function(n){n.O(0,[774,888,179],function(){return n(n.s=5207)}),_N_E=n.O()}]);
