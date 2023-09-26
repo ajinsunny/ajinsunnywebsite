@@ -1,1 +1,14 @@
-self.__NEXT_FONT_MANIFEST={pages:{"/_app":["static/media/25e11f223a13018e-s.p.woff2"]},app:{'/Users/AJIN/Documents/GitHub/ajinsunnywebsite/node_modules/@next/font/google/target.css?{"path":"components/Layout.js","import":"Heebo","arguments":[{"subsets":["latin"],"variable":"--font-heebo","weight":["100","200","300","400","500","600","700","800"]}],"variableName":"heebo"}':["static/media/25e11f223a13018e-s.p.woff2"],'/Users/AJIN/Documents/GitHub/ajinsunnywebsite/node_modules/@next/font/google/target.css.webpack[javascript/auto]!=!/Users/AJIN/Documents/GitHub/ajinsunnywebsite/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[1].oneOf[5].use[1]!/Users/AJIN/Documents/GitHub/ajinsunnywebsite/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[1].oneOf[5].use[2]!/Users/AJIN/Documents/GitHub/ajinsunnywebsite/node_modules/@next/font/google/target.css?{"path":"components/Layout.js","import":"Heebo","arguments":[{"subsets":["latin"],"variable":"--font-heebo","weight":["100","200","300","400","500","600","700","800"]}],"variableName":"heebo"}':["static/media/25e11f223a13018e-s.p.woff2"]},appUsingSizeAdjust:!0,pagesUsingSizeAdjust:!0};
+self.__NEXT_FONT_MANIFEST={
+  "pages": {
+    "/_app": [
+      "static/media/25e11f223a13018e-s.p.woff2"
+    ]
+  },
+  "app": {
+    "/Users/AJIN/Documents/GitHub/ajinsunnywebsite/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[1].oneOf[5].use[1]!/Users/AJIN/Documents/GitHub/ajinsunnywebsite/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[1].oneOf[5].use[2]!/Users/AJIN/Documents/GitHub/ajinsunnywebsite/node_modules/@next/font/google/target.css?{\"path\":\"components/Layout.js\",\"import\":\"Heebo\",\"arguments\":[{\"subsets\":[\"latin\"],\"variable\":\"--font-heebo\",\"weight\":[\"100\",\"200\",\"300\",\"400\",\"500\",\"600\",\"700\",\"800\"]}],\"variableName\":\"heebo\"}": [
+      "static/media/25e11f223a13018e-s.p.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pagesUsingSizeAdjust": true
+}
