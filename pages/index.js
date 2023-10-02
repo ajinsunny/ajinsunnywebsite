@@ -26,8 +26,8 @@ const Home = () => {
             exit="hidden"
             className="h1"
           >
-            Transforming Ideas <br /> Into{" "}
-            <span className="text-accent">Digital Reality</span>
+            Digitally Drafting <br /> Your Ideas Into{" "}
+            <span className="text-accent"> Execution</span>
           </motion.h1>
           {/* subtitle */}
           <motion.p
@@ -36,11 +36,7 @@ const Home = () => {
             animate="show"
             exit="hidden"
             className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16"
-          >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
-            nostrum quam reprehenderit vero, tenetur voluptatem nulla aut
-            aspernatur dolores ut.
-          </motion.p>
+          ></motion.p>
           {/* btn */}
           <div className="flex justify-center xl:hidden relative">
             <ProjectsBtn />
@@ -51,9 +47,7 @@ const Home = () => {
             animate="show"
             exit="hidden"
             className="hidden xl:flex"
-          >
-            <ProjectsBtn />
-          </motion.div>
+          ></motion.div>
         </div>
       </div>
       {/* image */}
