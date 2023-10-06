@@ -18,6 +18,14 @@
   color: #f13024;
 }
 
+.not-found {
+  text-align: center;
+}
+.not-found a {
+  color: blue;
+  text-decoration: underline;
+}
+
 @layer base {
   body {
     @apply overflow-hidden leading-relaxed;
