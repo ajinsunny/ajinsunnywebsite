@@ -40,16 +40,16 @@ export const aboutData = [
     title: "experience",
     info: [
       {
-        title: "UX/UI Designer - XYZ Company",
-        stage: "2012 - 2023",
+        title: "MindPetal Sofwtare Solutions - Software Engineer",
+        stage: "2021 - Present",
       },
       {
-        title: "Web Developer - ABC Agency",
-        stage: "2010 - 2012",
+        title: "Full-Stack Software Engineer - Outco Inc.",
+        stage: "2020 - 2021",
       },
       {
-        title: "Intern - DEF Corporation",
-        stage: "2008 - 2010",
+        title: "Embedded Software Developer - NASA Kentucky",
+        stage: "2017 - 2019",
       },
     ],
   },
@@ -57,16 +57,26 @@ export const aboutData = [
     title: "credentials",
     info: [
       {
-        title: "Web Development - ABC University, LA, CA",
-        stage: "2011",
+        title: (
+          <a
+            href="https://triplebyte.com/tb/ajin-sunny-5davdag/certificate"
+            style={{ textDecoration: "underline" }}
+          >
+            Triple Byte Certified Software Engineer - Triple Byte
+          </a>
+        ),
+        stage: "2023",
       },
       {
-        title: "Computer Science Diploma - AV Technical Institute",
-        stage: "2009",
-      },
-      {
-        title: "Certified Graphic Designer - ABC Institute, Los Angeles, CA",
-        stage: "2006",
+        title: (
+          <a
+            href="https://coursera.org/share/47e2de8cbcf7ccf2768a6dcb0e602965"
+            style={{ textDecoration: "underline" }}
+          >
+            Software Product Management Certificate - University of Alberta
+          </a>
+        ),
+        stage: "2022",
       },
     ],
   },
@@ -109,8 +119,8 @@ const About = () => {
             exit="hidden"
             className="h2"
           >
-            Captivating <span className="text-accent">stories</span> birth
-            magnificent designs.
+            Narratives <span className="text-accent">Fuel</span> Breakthrough
+            Designs
           </motion.h2>
           <motion.p
             variants={fadeIn("right", 0.4)}
@@ -119,9 +129,11 @@ const About = () => {
             exit="hidden"
             className="max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0"
           >
-            10 years ago, I began freelancing as a developer. Since then, I've
-            done remote work for agencies, counsulted for startups, and
-            collaborated on digital products for business and consumer use.
+            5 years ago, I began my journey as a software developer. I worked
+            for a carrer accelerator startup, where I learned the basics of web
+            development. Following this journey, I worked for United States
+            Federal Agencies as a web developer. I'm currently learning new
+            technologies such as Next.js and Solid.js
           </motion.p>
           {/* counters */}
           <motion.div
@@ -144,7 +156,7 @@ const About = () => {
               {/* clients */}
               <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
                 <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                  <CountUp start={0} end={100} duration={5} /> +
+                  <CountUp start={0} end={10} duration={5} /> +
                 </div>
                 <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
                   Satisfied clients
@@ -153,7 +165,7 @@ const About = () => {
               {/* projects */}
               <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
                 <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                  <CountUp start={0} end={100} duration={5} /> +
+                  <CountUp start={0} end={10} duration={5} /> +
                 </div>
                 <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
                   Finished projects
