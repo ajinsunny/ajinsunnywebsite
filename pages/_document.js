@@ -8,7 +8,6 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="icon" href="/icons8-user-color-96.png" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta charSet="utf-8" />
           <meta
             name="description"
