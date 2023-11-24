@@ -1,10 +1,10 @@
-// next image
 import Image from "next/image";
+import Head from "next/head";
 import { Suspense, lazy } from "react";
 
 // components
-const ParticlesContainer = lazy(() =>
-  import("../components/ParticlesContainer")
+const ParticlesContainer = lazy(
+  () => import("../components/ParticlesContainer")
 );
 const ProjectsBtn = lazy(() => import("../components/ProjectsBtn"));
 const Avatar = lazy(() => import("../components/Avatar"));
@@ -13,6 +13,10 @@ const Home = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <div className="bg-primary/60 h-full">
+        <Head>
+          <title>Ajin Sunny</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+        </Head>
         {/* text */}
         <div className="w-full h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10">
           <div className="text-center flex flex-col justify-center xl:pt-40 xl:text-left h-full container mx-auto">
@@ -37,9 +41,7 @@ const Home = () => {
           {/* particles */}
           <ParticlesContainer />
           {/* avatar img */}
-          <div
-            className="w-full h-full max-w-[525px] max-h-[650px] absolute -bottom-32 lg:bottom-0 lg:right-[15%]"
-          >
+          <div className="w-full h-full max-w-[525px] max-h-[650px] absolute -bottom-32 lg:bottom-0 lg:right-[15%]">
             <Avatar />
           </div>
         </div>
