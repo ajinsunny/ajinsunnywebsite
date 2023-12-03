@@ -44,28 +44,23 @@ const Contact = () => {
           <form onSubmit={handleFormSubmit}>
             {/* input group */}
             <div className="flex gap-x-6 w-full">
+              <input name="name" placeholder="Name" className="input" />
               <input
-                type="text"
-                name="name"
-                placeholder="name"
-                className="input"
-              />
-              <input
-                type="text"
+                type="email"
                 name="email"
-                placeholder="email"
+                placeholder="Email"
                 className="input"
               />
             </div>
             <input
               type="text"
               name="subject"
-              placeholder="subject"
+              placeholder="Subject"
               className="input"
             />
             <textarea
               name="message"
-              placeholder="message"
+              placeholder="Message"
               className="textarea"
             ></textarea>
             <button
