@@ -1,9 +1,33 @@
-// components
-
-// icons
 import { BsArrowRight } from "react-icons/bs";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import Confetti from "react-confetti";
 
 const Contact = () => {
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [confettiWidth, setConfettiWidth] = useState(0);
+  const [confettiHeight, setConfettiHeight] = useState(0);
+  const router = useRouter();
+
+  useEffect(() => {
+    // Ensure this code runs only in the client-side environment
+    if (typeof window !== "undefined") {
+      setConfettiWidth(window.innerWidth);
+      setConfettiHeight(window.innerHeight);
+
+      // Optionally, handle window resize
+      const handleResize = () => {
+        setConfettiWidth(window.innerWidth);
+        setConfettiHeight(window.innerHeight);
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      // Clean up the event listener when the component unmounts
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
   // Function to handle form submission
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -23,6 +47,13 @@ const Contact = () => {
 
     if (response.ok) {
       console.log("Email sent successfully");
+      setShowConfetti(true);
+      setShowPopup(true);
+      setTimeout(() => {
+        setShowConfetti(false);
+        setShowPopup(false);
+        router.push("/");
+      }, 2000);
     } else {
       console.log("Failed to send email");
     }
@@ -74,6 +105,18 @@ const Contact = () => {
             </button>
           </form>
         </div>
+        {/* Popup Notification */}
+        {showPopup && (
+          <div className="popup">Your message has been sent successfully!</div>
+        )}
+        {/* Confetti Effect */}
+        {showConfetti && (
+          <Confetti
+            width={window.innerWidth}
+            height={window.innerHeight}
+            gravity={1}
+          />
+        )}
       </div>
     </div>
   );

@@ -1,22 +1,24 @@
 import nodemailer from "nodemailer";
+require("dotenv").config();
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
     // Create a transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true, // use SSL
+      host: "email-smtp.us-east-1.amazonaws.com",
+      port: 587,
+      secure: false, // use SSL
       auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASSWORD,
+        user: process.env.SES_SMTP_USER,
+        pass: process.env.SES_SMTP_PASSWORD,
       },
     });
 
     //Mail options
     let mailOptions = {
-      from: req.body.email, // send address
-      to: process.env.EMAIL, // receiver address
+      from: "ajin.sunny@gmail.com", // send address
+      replyTo: req.body.email,
+      to: process.env.RECEIVER_EMAIL, // receiver address
       subject: `Message from ${req.body.email}: ${req.body.subject}`,
       text: req.body.message,
     };
