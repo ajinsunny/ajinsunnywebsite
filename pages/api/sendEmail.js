@@ -27,6 +27,7 @@ export default async function handler(req, res) {
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.log(error);
+        console.error("Error stack:", error.stack);
         res.status(500).send(error.message);
       } else {
         console.log("Email sent");
