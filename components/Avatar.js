@@ -10,6 +10,7 @@ const Avatar = () => {
         height={656}
         alt=""
         className="translate-z-0 w-full h-full"
+        loading="eager"
       />
     </div>
   );
