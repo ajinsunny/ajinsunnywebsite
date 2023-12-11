@@ -37,7 +37,7 @@ const Home = () => {
         {/* image */}
         <div className="w-[1200px] h-full absolute right-0 bottom-0">
           <BackgroundImage
-            src="/public/bg-explosion.webp"
+            src="/bg-explosion.webp"
             alt="Background"
             className="mix-blend-color-dodge"
           />
