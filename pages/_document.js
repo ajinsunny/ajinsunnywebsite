@@ -5,7 +5,7 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 class MyDocument extends Document {
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
           <link rel="icon" href="/icons8-user-color-96.png" />
           <meta charSet="utf-8" />

@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Head from "next/head";
 import { Suspense, lazy } from "react";
-
+import BackgroundImage from "../components/BackgroundImage"; // import the new component
+import Image from "next/image";
 // components
 const ParticlesContainer = lazy(
   () => import("../components/ParticlesContainer")
@@ -36,8 +36,11 @@ const Home = () => {
         </div>
         {/* image */}
         <div className="w-[1200px] h-full absolute right-0 bottom-0">
-          {/* bg img */}
-          <div className="bg-none xl:bg-explosion xl:bg-cover xl:bg-right xl:bg-no-repeat w-full h-full absolute mix-blend-color-dodge translate-z-0"></div>
+          <BackgroundImage
+            src="/public/bg-explosion.webp"
+            alt="Background"
+            className="mix-blend-color-dodge"
+          />
           {/* particles */}
           <ParticlesContainer />
           {/* avatar img */}
