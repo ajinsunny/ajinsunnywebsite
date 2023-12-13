@@ -11,6 +11,7 @@ export default async function handler(req, res) {
         user: process.env.SES_SMTP_USER,
         pass: process.env.SES_SMTP_PASSWORD,
       },
+      authMethod: "PLAIN",
     });
 
     //Mail options
