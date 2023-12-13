@@ -5,8 +5,8 @@ export default async function handler(req, res) {
     // Create a transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
       host: "email-smtp.us-east-1.amazonaws.com",
-      port: 465,
-      secure: true, // use SSL
+      port: 587,
+      secure: false, // use SSL
       auth: {
         user: process.env.SES_SMTP_USER,
         pass: process.env.SES_SMTP_PASSWORD,
