@@ -22,18 +22,26 @@ export default async function handler(req, res) {
       text: req.body.message,
     };
 
-    //Send email
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.log(error);
-        console.error("Error stack:", error.stack);
-        res.status(500).send(error.message);
-      } else {
-        console.log("Email sent");
-        res.status(200).json(req.body);
-      }
-    });
+    try {
+      // Convert the asynchronous operation into a promise
+      const info = await new Promise((resolve, reject) => {
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(info);
+          }
+        });
+      });
+
+      console.log("Email sent", info);
+      return res.status(200).json({ message: "Email sent successfully" });
+    } catch (error) {
+      console.error("Error sending email:", error);
+      console.error("Error stack:", error.stack);
+      return res.status(500).send("Error sending email: " + error.message);
+    }
   } else {
-    res.status(405).end();
+    res.status(405).end("Method Not Allowed");
   }
 }
