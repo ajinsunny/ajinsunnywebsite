@@ -1,5 +1,4 @@
 import nodemailer from "nodemailer";
-require("dotenv").config();
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
