@@ -4,17 +4,23 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     // Create a transporter object using the default SMTP transport
 
-    console.log("process.env.SES_SMTP_USER", process.env.SES_SMTP_USER);
-    console.log("process.env.SES_SMTP_PASSWORD", process.env.SES_SMTP_PASSWORD);
-    console.log("API_KEY", process.env.API_KEY);
+    console.log(
+      "process.env.SES_SMTP_USER",
+      process.env.NEXT_PUBLIC_SES_SMTP_USER
+    );
+    console.log(
+      "process.env.SES_SMTP_PASSWORD",
+      process.env.NEXT_PUBLIC_SES_SMTP_PASSWORD
+    );
+    console.log("API_KEY", process.env.NEXT_PUBLIC_API_KEY);
 
     let transporter = nodemailer.createTransport({
       host: "email-smtp.us-east-1.amazonaws.com",
       port: 587,
       secure: false, // use SSL
       auth: {
-        user: process.env.SES_SMTP_USER,
-        pass: process.env.SES_SMTP_PASSWORD,
+        user: process.env.NEXT_PUBLIC_SES_SMTP_USER,
+        pass: process.env.NEXT_PUBLIC_SES_SMTP_PASSWORD,
       },
       authMethod: "PLAIN",
     });
