@@ -29,7 +29,7 @@ export default async function handler(req, res) {
     let mailOptions = {
       from: "ajin.sunny@gmail.com", // send address
       replyTo: req.body.email,
-      to: process.env.RECEIVER_EMAIL, // receiver address
+      to: process.env.NEXT_PUBLIC_RECEIVER_EMAIL, // receiver address
       subject: `Message from ${req.body.email}: ${req.body.subject}`,
       text: req.body.message,
     };
