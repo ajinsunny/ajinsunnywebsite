@@ -1,33 +1,19 @@
-import { BsArrowRight } from "react-icons/bs";
 import React, { useState, useEffect } from "react";
+import { BsArrowRight } from "react-icons/bs";
 import { useRouter } from "next/router";
-import Confetti from "react-confetti";
+import { useReward } from "react-rewards";
 
 const Contact = () => {
-  const [showConfetti, setShowConfetti] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [confettiWidth, setConfettiWidth] = useState(0);
-  const [confettiHeight, setConfettiHeight] = useState(0);
   const router = useRouter();
+  const { reward, isAnimating } = useReward("rewardId", "confetti", {
+    angle: 90,
+    spread: 360,
+    startVelocity: 50,
+    elementCount: 70,
+    elementSize: 8,
+  });
 
-  useEffect(() => {
-    // Ensure this code runs only in the client-side environment
-    if (typeof window !== "undefined") {
-      setConfettiWidth(window.innerWidth);
-      setConfettiHeight(window.innerHeight);
-
-      // Optionally, handle window resize
-      const handleResize = () => {
-        setConfettiWidth(window.innerWidth);
-        setConfettiHeight(window.innerHeight);
-      };
-
-      window.addEventListener("resize", handleResize);
-
-      // Clean up the event listener when the component unmounts
-      return () => window.removeEventListener("resize", handleResize);
-    }
-  }, []);
   // Function to handle form submission
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -46,14 +32,13 @@ const Contact = () => {
     });
 
     if (response.ok) {
-      console.log("Email sent successfully");
-      setShowConfetti(true);
+      console.log("Email sent successfully, triggering confetti");
+      reward(); // Trigger confetti
       setShowPopup(true);
       setTimeout(() => {
-        setShowConfetti(false);
         setShowPopup(false);
         router.push("/");
-      }, 1000);
+      }, 3000);
     } else {
       console.log("Failed to send email");
     }
@@ -96,9 +81,13 @@ const Contact = () => {
             ></textarea>
             <button
               type="submit"
+              disabled={isAnimating}
               className="btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group"
             >
-              <span className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500">
+              <span
+                id="rewardId"
+                className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500"
+              >
                 Let's talk
               </span>
               <BsArrowRight className="-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]" />
@@ -108,14 +97,6 @@ const Contact = () => {
         {/* Popup Notification */}
         {showPopup && (
           <div className="popup">Your message has been sent successfully!</div>
-        )}
-        {/* Confetti Effect */}
-        {showConfetti && (
-          <Confetti
-            width={window.innerWidth}
-            height={window.innerHeight}
-            gravity={1}
-          />
         )}
       </div>
     </div>
