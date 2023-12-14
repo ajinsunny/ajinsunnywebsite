@@ -3,6 +3,10 @@ import nodemailer from "nodemailer";
 export default async function handler(req, res) {
   if (req.method === "POST") {
     // Create a transporter object using the default SMTP transport
+
+    console.log("process.env.SES_SMTP_USER", process.env.SES_SMTP_USER);
+    console.log("process.env.SES_SMTP_PASSWORD", process.env.SES_SMTP_PASSWORD);
+
     let transporter = nodemailer.createTransport({
       host: "email-smtp.us-east-1.amazonaws.com",
       port: 587,

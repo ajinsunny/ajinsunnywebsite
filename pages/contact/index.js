@@ -53,7 +53,7 @@ const Contact = () => {
         setShowConfetti(false);
         setShowPopup(false);
         router.push("/");
-      }, 2000);
+      }, 1000);
     } else {
       console.log("Failed to send email");
     }
