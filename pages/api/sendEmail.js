@@ -3,7 +3,6 @@ import nodemailer from "nodemailer";
 export default async function handler(req, res) {
   if (req.method === "POST") {
     // Create a transporter object using the default SMTP transport
-
     let transporter = nodemailer.createTransport({
       host: "email-smtp.us-east-1.amazonaws.com",
       port: 587,
@@ -14,7 +13,6 @@ export default async function handler(req, res) {
       },
       authMethod: "PLAIN",
     });
-
     //Mail options
     let mailOptions = {
       from: "ajin.sunny@gmail.com", // send address
@@ -35,7 +33,6 @@ export default async function handler(req, res) {
           }
         });
       });
-
       console.log("Email sent", info);
       return res.status(200).json({ message: "Email sent successfully" });
     } catch (error) {
