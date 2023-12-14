@@ -8,7 +8,7 @@ const Contact = () => {
   const router = useRouter();
   const { reward, isAnimating } = useReward("rewardId", "confetti", {
     angle: 90,
-    spread: 360,
+    spread: 60,
     startVelocity: 50,
     elementCount: 70,
     elementSize: 8,
@@ -38,7 +38,7 @@ const Contact = () => {
       setTimeout(() => {
         setShowPopup(false);
         router.push("/");
-      }, 3000);
+      }, 2000);
     } else {
       console.log("Failed to send email");
     }
@@ -59,35 +59,33 @@ const Contact = () => {
           {/* form */}
           <form onSubmit={handleFormSubmit}>
             {/* input group */}
-            <div className="flex gap-x-6 w-full">
-              <input name="name" placeholder="Name" className="input" />
+            <div className="flex flex-col gap-y-4 w-full">
+              <input name="name" placeholder="Your Name" className="input" />
               <input
                 type="email"
                 name="email"
-                placeholder="Email"
+                placeholder="Your email address"
                 className="input"
               />
             </div>
             <input
               type="text"
               name="subject"
-              placeholder="Subject"
+              placeholder="Topic of your message"
               className="input"
             />
             <textarea
               name="message"
-              placeholder="Message"
+              placeholder="Hi Ajin, I'd like to talk about..."
               className="textarea"
             ></textarea>
             <button
               type="submit"
               disabled={isAnimating}
+              id="rewardId"
               className="btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group"
             >
-              <span
-                id="rewardId"
-                className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500"
-              >
+              <span className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500">
                 Let's talk
               </span>
               <BsArrowRight className="-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]" />
