@@ -6,6 +6,7 @@ export default async function handler(req, res) {
 
     console.log("process.env.SES_SMTP_USER", process.env.SES_SMTP_USER);
     console.log("process.env.SES_SMTP_PASSWORD", process.env.SES_SMTP_PASSWORD);
+    console.log("API_KEY", process.env.API_KEY);
 
     let transporter = nodemailer.createTransport({
       host: "email-smtp.us-east-1.amazonaws.com",
