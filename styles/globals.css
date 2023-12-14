@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800&display=swap");
 
 .translate-z-0 {
   transform: translateZ(0px);
@@ -51,6 +52,7 @@
   }
   .input,
   .textarea {
+    @apply mb-4;
     @apply bg-transparent outline-none focus:ring-1 focus:ring-accent border border-white/20 placeholder:text-white/30 placeholder:font-light;
   }
   .textarea {

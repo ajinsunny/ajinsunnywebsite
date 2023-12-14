@@ -1,33 +1,19 @@
-import { BsArrowRight } from "react-icons/bs";
 import React, { useState, useEffect } from "react";
+import { BsArrowRight } from "react-icons/bs";
 import { useRouter } from "next/router";
-import Confetti from "react-confetti";
+import { useReward } from "react-rewards";
 
 const Contact = () => {
-  const [showConfetti, setShowConfetti] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [confettiWidth, setConfettiWidth] = useState(0);
-  const [confettiHeight, setConfettiHeight] = useState(0);
   const router = useRouter();
+  const { reward, isAnimating } = useReward("rewardId", "confetti", {
+    angle: 90,
+    spread: 60,
+    startVelocity: 50,
+    elementCount: 70,
+    elementSize: 8,
+  });
 
-  useEffect(() => {
-    // Ensure this code runs only in the client-side environment
-    if (typeof window !== "undefined") {
-      setConfettiWidth(window.innerWidth);
-      setConfettiHeight(window.innerHeight);
-
-      // Optionally, handle window resize
-      const handleResize = () => {
-        setConfettiWidth(window.innerWidth);
-        setConfettiHeight(window.innerHeight);
-      };
-
-      window.addEventListener("resize", handleResize);
-
-      // Clean up the event listener when the component unmounts
-      return () => window.removeEventListener("resize", handleResize);
-    }
-  }, []);
   // Function to handle form submission
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -46,14 +32,13 @@ const Contact = () => {
     });
 
     if (response.ok) {
-      console.log("Email sent successfully");
-      setShowConfetti(true);
+      console.log("Email sent successfully, triggering confetti");
+      reward(); // Trigger confetti
       setShowPopup(true);
       setTimeout(() => {
-        setShowConfetti(false);
         setShowPopup(false);
         router.push("/");
-      }, 1000);
+      }, 2000);
     } else {
       console.log("Failed to send email");
     }
@@ -74,28 +59,30 @@ const Contact = () => {
           {/* form */}
           <form onSubmit={handleFormSubmit}>
             {/* input group */}
-            <div className="flex gap-x-6 w-full">
-              <input name="name" placeholder="Name" className="input" />
+            <div className="flex flex-col gap-y-4 w-full">
+              <input name="name" placeholder="Your Name" className="input" />
               <input
                 type="email"
                 name="email"
-                placeholder="Email"
+                placeholder="Your email address"
                 className="input"
               />
             </div>
             <input
               type="text"
               name="subject"
-              placeholder="Subject"
+              placeholder="Topic of your message"
               className="input"
             />
             <textarea
               name="message"
-              placeholder="Message"
+              placeholder="Hi Ajin, I'd like to talk about..."
               className="textarea"
             ></textarea>
             <button
               type="submit"
+              disabled={isAnimating}
+              id="rewardId"
               className="btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group"
             >
               <span className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500">
@@ -108,14 +95,6 @@ const Contact = () => {
         {/* Popup Notification */}
         {showPopup && (
           <div className="popup">Your message has been sent successfully!</div>
-        )}
-        {/* Confetti Effect */}
-        {showConfetti && (
-          <Confetti
-            width={window.innerWidth}
-            height={window.innerHeight}
-            gravity={1}
-          />
         )}
       </div>
     </div>
