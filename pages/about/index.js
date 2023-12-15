@@ -25,12 +25,12 @@ export const aboutData = [
       {
         title: "Web Development",
         icons: [
-          <FaHtml5 />,
-          <FaCss3 />,
-          <FaJs />,
-          <FaReact />,
-          <SiNextdotjs />,
-          <SiFramer />,
+          <FaHtml5 key="html5" />,
+          <FaCss3 key="css3" />,
+          <FaJs key="javascript" />,
+          <FaReact key="react" />,
+          <SiNextdotjs key="nextjs" />,
+          <SiFramer key="framer" />,
         ],
       },
     ],
@@ -85,8 +85,6 @@ export const aboutData = [
 // components
 import Avatar from "../../components/Avatar";
 
-
-
 // counter
 import CountUp from "react-countup";
 
@@ -110,7 +108,7 @@ const About = () => {
             5 years ago, I began my journey as a software developer. I worked
             for a carrer accelerator startup, where I learned the basics of web
             development. Following this journey, I worked for United States
-            Federal Agencies as a web developer. I'm currently learning new
+            Federal Agencies as a web developer. I&apos;m currently learning new
             technologies such as Next.js and Solid.js
           </p>
           {/* counters */}
@@ -178,7 +176,11 @@ const About = () => {
                   <div className="flex gap-x-4">
                     {/* icons */}
                     {item.icons?.map((icon, itemIndex) => {
-                      return <div className="text-2xl text-white">{icon}</div>;
+                      return (
+                        <div key={itemIndex} className="text-2xl text-white">
+                          {icon}
+                        </div>
+                      );
                     })}
                   </div>
                 </div>
