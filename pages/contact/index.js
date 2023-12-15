@@ -54,18 +54,24 @@ const Contact = () => {
         <div className="flex flex-col w-full max-w-[700px]">
           {/* text */}
           <h2 className="h2 text-center mb-12">
-            Let's <span className="text-accent">connect.</span>
+            Let&apos;s <span className="text-accent">connect.</span>
           </h2>
           {/* form */}
           <form onSubmit={handleFormSubmit}>
             {/* input group */}
             <div className="flex flex-col gap-y-4 w-full">
-              <input name="name" placeholder="Your Name" className="input" />
+              <input
+                name="name"
+                placeholder="Your Name"
+                className="input"
+                required
+              />
               <input
                 type="email"
                 name="email"
                 placeholder="Your email address"
                 className="input"
+                required
               />
             </div>
             <input
@@ -73,11 +79,13 @@ const Contact = () => {
               name="subject"
               placeholder="Topic of your message"
               className="input"
+              required
             />
             <textarea
               name="message"
               placeholder="Hi Ajin, I'd like to talk about..."
               className="textarea"
+              required
             ></textarea>
             <button
               type="submit"
@@ -86,7 +94,7 @@ const Contact = () => {
               className="btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group"
             >
               <span className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500">
-                Let's talk
+                Let&apos;s talk
               </span>
               <BsArrowRight className="-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]" />
             </button>
