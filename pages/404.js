@@ -12,7 +12,7 @@ export default function NotFound() {
         </h1>
 
         <h2 className="text-2xl font-bold dark:text-white">
-          Sorry, that page can't be found
+          Sorry, that page can&apos;t be found
         </h2>
         <h3 className=" text-2xl font-bold dark:text-white">
           Go back to the <Link href="/"> Homepage</Link>
