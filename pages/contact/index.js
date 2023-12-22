@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
+
 import { BsArrowRight } from "react-icons/bs";
+
 import { useRouter } from "next/router";
 import { useReward } from "react-rewards";
 
 const Contact = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [formErrors, setFormErrors] = useState({});
+
   const router = useRouter();
   const { reward, isAnimating } = useReward("rewardId", "confetti", {
     angle: 90,
@@ -27,39 +30,50 @@ const Contact = () => {
     e.preventDefault();
     setFormErrors({});
 
-    const formData = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      subject: e.target.subject.value,
-      message: e.target.message.value,
-    };
+    try {
+      const recaptchaToken = await grecaptcha.execute(
+        process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+        { action: "submit" }
+      );
+      const formData = {
+        name: e.target.name.value,
+        email: e.target.email.value,
+        subject: e.target.subject.value,
+        message: e.target.message.value,
+        recaptchaToken,
+      };
 
-    const response = await fetch("/api/sendEmail", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+      const response = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    if (response.ok) {
-      console.log("Email sent successfully, triggering confetti");
-      reward(); // Trigger confetti
-      setShowPopup(true);
-      setTimeout(() => {
-        setShowPopup(false);
-        router.push("/");
-      }, 2000);
-    } else {
-      const errorData = await response.json();
-      // Transform errors to a more usable format
-      const transformedErrors = errorData.errors.reduce((acc, error) => {
-        acc[error.path[0]] = error.message;
-        return acc;
-      }, {});
-
-      setFormErrors(transformedErrors);
-      console.log("Failed to send email");
+      if (response.ok) {
+        console.log("Email sent successfully, triggering confetti");
+        reward();
+        setShowPopup(true);
+        setTimeout(() => {
+          setShowPopup(false);
+          router.push("/");
+        }, 2000);
+      } else {
+        const errorData = await response.json();
+        if (errorData && errorData.errors && Array.isArray(errorData.errors)) {
+          const transformedErrors = errorData.errors.reduce((acc, error) => {
+            acc[error.path[0]] = error.message;
+            return acc;
+          }, {});
+          setFormErrors(transformedErrors);
+        } else {
+          // Handle other types of errors or unexpected responses
+        }
+      }
+    } catch (error) {
+      console.error("ReCAPTCHA Error:", error);
+      // Handle reCAPTCHA error
     }
   };
 
@@ -123,6 +137,7 @@ const Contact = () => {
                 <p className="error-message">{formErrors.message}</p>
               )}
             </div>
+
             {/* Submit button */}
             <button
               type="submit"
