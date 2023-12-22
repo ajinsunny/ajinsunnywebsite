@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import { z } from "zod";
+import axios from "axios";
 
 // Define the schema for validation
 const ContactSchema = z.object({
@@ -20,6 +21,7 @@ const ContactSchema = z.object({
     .string()
     .min(20, { message: "Message must be at least 20 characters long" })
     .max(500, { message: "Message must be less than 500 characters" }),
+  recaptchaToken: z.string(),
 });
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -29,6 +31,23 @@ export default async function handler(req, res) {
   try {
     // Validate the request body
     const validatedData = ContactSchema.parse(req.body);
+
+    // Verify the reCAPTCHA token
+    const recaptchaResponse = await axios({
+      method: "post",
+      url: "https://www.google.com/recaptcha/api/siteverify",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      data: new URLSearchParams({
+        secret: process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY, // This is your server-side key
+        response: validatedData.recaptchaToken,
+      }).toString(),
+    });
+
+    if (!recaptchaResponse.data.success) {
+      return res.status(400).json({ message: "reCAPTCHA verification failed" });
+    }
 
     // Email sending logic
     let transporter = nodemailer.createTransport({
@@ -67,52 +86,3 @@ export default async function handler(req, res) {
     return res.status(500).send("Error sending email: " + error.message);
   }
 }
-
-// import nodemailer from "nodemailer";
-
-// export default async function handler(req, res) {
-//   if (req.method === "POST") {
-//     // Create a transporter object using the default SMTP transport
-//     let transporter = nodemailer.createTransport({
-//       host: "email-smtp.us-east-1.amazonaws.com",
-//       port: 587,
-//       secure: false, // use SSL
-//       auth: {
-//         user: process.env.NEXT_PUBLIC_SES_SMTP_USER,
-//         pass: process.env.NEXT_PUBLIC_SES_SMTP_PASSWORD,
-//       },
-//       authMethod: "PLAIN",
-//     });
-
-//     //Mail options
-//     let emailPrefix = req.body.email.split("@")[0];
-//     let mailOptions = {
-//       from: "ajin.sunny@gmail.com", // send address
-//       replyTo: req.body.email,
-//       to: process.env.NEXT_PUBLIC_RECEIVER_EMAIL, // receiver address
-//       subject: `Hey Ajin, ${emailPrefix} would like to talk about ${req.body.subject}`,
-//       text: req.body.message,
-//     };
-
-//     try {
-//       // Convert the asynchronous operation into a promise
-//       const info = await new Promise((resolve, reject) => {
-//         transporter.sendMail(mailOptions, (error, info) => {
-//           if (error) {
-//             reject(error);
-//           } else {
-//             resolve(info);
-//           }
-//         });
-//       });
-//       console.log("Email sent", info);
-//       return res.status(200).json({ message: "Email sent successfully" });
-//     } catch (error) {
-//       console.error("Error sending email:", error);
-//       console.error("Error stack:", error.stack);
-//       return res.status(500).send("Error sending email: " + error.message);
-//     }
-//   } else {
-//     res.status(405).end("Method Not Allowed");
-//   }
-// }
