@@ -40,7 +40,7 @@ export default async function handler(req, res) {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       data: new URLSearchParams({
-        secret: process.env.RECAPTCHA_SECRET_KEY, // This is your server-side key
+        secret: process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY, // This is your server-side key
         response: validatedData.recaptchaToken,
       }).toString(),
     });
