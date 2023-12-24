@@ -20,6 +20,7 @@ const Header = () => {
               height={50}
               alt=""
               priority={true}
+              className="logo"
             />
           </Link>
           {/* socials */}
