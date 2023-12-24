@@ -1,21 +1,9 @@
 import React, { useState } from "react";
 
 // icons
-import {
-  FaHtml5,
-  FaCss3,
-  FaJs,
-  FaReact,
-  FaWordpress,
-  FaFigma,
-} from "react-icons/fa";
+import { FaHtml5, FaCss3, FaJs, FaReact } from "react-icons/fa";
 
-import {
-  SiNextdotjs,
-  SiFramer,
-  SiAdobexd,
-  SiAdobephotoshop,
-} from "react-icons/si";
+import { SiNextdotjs, SiFramer } from "react-icons/si";
 
 //  about data
 export const aboutData = [
@@ -92,12 +80,12 @@ const About = () => {
   const [index, setIndex] = useState(0);
   console.log(index);
   return (
-    <div className="h-full bg-primary/30 py-32 text-center xl:text-left">
+    <div className="h-full bg-primary/30 py-24 text-center xl:text-left">
       {/* avatar img */}
       <div className="hidden xl:flex absolute bottom-0 -left-[370px]">
         <Avatar />
       </div>
-      <div className="container mx-auto h-full flex flex-col items-center xl:flex-row gap-x-6">
+      <div className="container mx-auto h-full flex flex-col items-center xl:flex-row">
         {/* text */}
         <div className="flex-1 flex flex-col justify-center">
           <h2 className="h2">

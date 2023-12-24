@@ -9,6 +9,15 @@ const Layout = ({ children }) => {
     <div
       className={`page bg-site text-white bg-cover bg-no-repeat font-heebo relative`}
     >
+      <Head>
+        <title>Ajin Sunny</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="description"
+          content="This website is the portfolio for Ajin Sunny"
+        />
+        <link rel="icon" href="/icons8-user-color-96.png" />
+      </Head>
       <TopLeftImg />
       <Nav />
       <Header />

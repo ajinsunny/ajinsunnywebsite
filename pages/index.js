@@ -13,10 +13,6 @@ const Home = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <div className="bg-primary/60 h-full">
-        <Head>
-          <title>Ajin Sunny</title>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-        </Head>
         {/* text */}
         <div className="w-full h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10">
           <div className="text-center flex flex-col justify-center xl:pt-40 xl:text-left h-full container mx-auto">
