@@ -1,8 +1,10 @@
 // components
-import Nav from "../components/Nav";
-import Header from "../components/Header";
-import TopLeftImg from "../components/TopLeftImg";
+import React, { Suspense, lazy } from "react";
 import Head from "next/head";
+
+const Nav = lazy(() => import("../components/Nav"));
+const Header = lazy(() => import("../components/Header"));
+const TopLeftImg = lazy(() => import("../components/TopLeftImg"));
 
 const Layout = ({ children }) => {
   return (
@@ -16,11 +18,13 @@ const Layout = ({ children }) => {
           name="description"
           content="This website is the portfolio for Ajin Sunny"
         />
-        <link rel="icon" href="/icons8-user-color-96.png" />
+        <link rel="icon" href="/icons8-user-color-16.webp" />
       </Head>
-      <TopLeftImg />
-      <Nav />
-      <Header />
+      <Suspense fallback={<div>Loading...</div>}>
+        <TopLeftImg />
+        <Nav />
+        <Header />
+      </Suspense>
       {children}
     </div>
   );

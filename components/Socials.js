@@ -1,4 +1,4 @@
-// links
+import React, { memo } from "react";
 import Link from "next/link";
 
 // icons
@@ -10,7 +10,7 @@ import {
   RiLinkedinBoxFill,
 } from "react-icons/ri";
 
-const Socials = () => {
+const SocialsComponent = () => {
   return (
     <div className="flex items-center gap-x-5 text-lg">
       <Link
@@ -46,5 +46,8 @@ const Socials = () => {
     </div>
   );
 };
+
+const Socials = memo(SocialsComponent);
+Socials.displayName = "Socials";
 
 export default Socials;

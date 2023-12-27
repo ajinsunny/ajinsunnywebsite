@@ -1,11 +1,11 @@
-// next image
+import React, { lazy, Suspense } from "react";
 import Image from "next/image";
 
 // next link
 import Link from "next/link";
 
 // components
-import Socials from "../components/Socials";
+const Socials = lazy(() => import("../components/Socials"));
 
 const Header = () => {
   return (
@@ -24,7 +24,9 @@ const Header = () => {
             />
           </Link>
           {/* socials */}
-          <Socials />
+          <Suspense fallback={<div>Loading Socials...</div>}>
+            <Socials />
+          </Suspense>
         </div>
       </div>
     </header>

@@ -1,11 +1,6 @@
-import Head from "next/head";
-import { Suspense, lazy } from "react";
-import BackgroundImage from "../components/BackgroundImage"; // import the new component
-import Image from "next/image";
+import { Suspense, lazy } from "react"; // import the new component
 // components
-const ParticlesContainer = lazy(
-  () => import("../components/ParticlesContainer")
-);
+const BackgroundImage = lazy(() => import("../components/BackgroundImage"));
 const ProjectsBtn = lazy(() => import("../components/ProjectsBtn"));
 const Avatar = lazy(() => import("../components/Avatar"));
 
@@ -37,8 +32,6 @@ const Home = () => {
             alt="Background"
             className="mix-blend-color-dodge"
           />
-          {/* particles */}
-          <ParticlesContainer />
           {/* avatar img */}
           <div className="w-full h-full max-w-[525px] max-h-[650px] absolute -bottom-32 lg:bottom-0 lg:right-[15%]">
             <Avatar />
