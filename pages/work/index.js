@@ -1,6 +1,5 @@
 // components
 import WorkSlider from "../../components/WorkSlider";
-import Bulb from "../../components/Bulb";
 
 const Work = () => {
   return (
@@ -13,14 +12,12 @@ const Work = () => {
               My work <span className="text-accent">.</span>
             </h2>
           </div>
-
           {/* slider */}
           <div className="w-full xl:max-w-[65%]">
             <WorkSlider />
           </div>
         </div>
       </div>
-      <Bulb />
     </div>
   );
 };
