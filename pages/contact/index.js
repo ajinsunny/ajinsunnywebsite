@@ -4,6 +4,7 @@ import { BsArrowRight } from "react-icons/bs";
 
 import { useRouter } from "next/router";
 import { useReward } from "react-rewards";
+import Script from "next/script";
 
 const Contact = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -79,6 +80,10 @@ const Contact = () => {
 
   return (
     <div className="h-full bg-primary/30">
+      <Script
+        src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+        strategy="afterInteractive"
+      />
       <div
         className="container mx-auto py-32 text-center xl:text-left 
     flex items-center justify-center h-full"
