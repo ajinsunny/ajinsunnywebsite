@@ -59,7 +59,7 @@ const Contact = () => {
         setTimeout(() => {
           setShowPopup(false);
           router.push("/");
-        }, 1000);
+        }, 100);
       } else {
         const errorData = await response.json();
         if (errorData && errorData.errors && Array.isArray(errorData.errors)) {
