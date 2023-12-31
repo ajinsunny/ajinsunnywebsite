@@ -9,7 +9,7 @@ const Avatar = lazy(() => import("../components/Avatar"));
 const Home = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <div className="bg-primary/60 h-full">
+      <div className="bg-primary/60 h-full w-full">
         {/* text */}
         <div className="w-full h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10">
           <div className="text-center flex flex-col justify-center xl:pt-40 xl:text-left h-full container mx-auto">
@@ -58,16 +58,14 @@ const Home = () => {
           </div>
         </div>
         {/* image */}
-        <div className="w-[1200px] h-full absolute right-0 bottom-0">
-          <BackgroundImage
-            src="/bg-explosion.webp"
-            alt="Background"
-            className="mix-blend-color-dodge"
-          />
-          {/* avatar img */}
-          <div className="w-full h-full max-w-[525px] max-h-[650px] absolute -bottom-32 lg:bottom-0 lg:right-[15%]">
-            <Avatar />
-          </div>
+        <BackgroundImage
+          src="/bg-explosion.webp"
+          alt="Background"
+          className="mix-blend-color-dodge"
+        />
+        {/* avatar img */}
+        <div className="w-full h-full max-w-[525px] max-h-[650px] absolute -bottom-32 lg:bottom-0 lg:right-[15%]">
+          <Avatar />
         </div>
       </div>
     </Suspense>
