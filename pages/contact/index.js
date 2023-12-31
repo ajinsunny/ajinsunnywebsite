@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 
 import { BsArrowRight } from "react-icons/bs";
 
@@ -9,6 +9,7 @@ import Script from "next/script";
 const Contact = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [formErrors, setFormErrors] = useState({});
+  const [recaptchaToken, setRecaptchaToken] = useState("");
 
   const router = useRouter();
   const { reward, isAnimating } = useReward("rewardId", "confetti", {
@@ -26,16 +27,20 @@ const Contact = () => {
     }
   };
 
-  // Function to handle form submission
+  const executeRecaptcha = useCallback(async () => {
+    const token = await grecaptcha.execute(
+      process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+      { action: "submit" }
+    );
+    setRecaptchaToken(token);
+  }, []);
+
+  // // Function to handle form submission
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setFormErrors({});
 
     try {
-      const recaptchaToken = await grecaptcha.execute(
-        process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
-        { action: "submit" }
-      );
       const formData = {
         name: e.target.name.value,
         email: e.target.email.value,
@@ -53,13 +58,12 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        console.log("Email sent successfully, triggering confetti");
         reward();
         setShowPopup(true);
         setTimeout(() => {
           setShowPopup(false);
           router.push("/");
-        }, 100);
+        }, 2000);
       } else {
         const errorData = await response.json();
         if (errorData && errorData.errors && Array.isArray(errorData.errors)) {
@@ -98,7 +102,12 @@ const Contact = () => {
           <form onSubmit={handleFormSubmit}>
             {/* Name input group */}
             <div className="flex flex-col w-full mb-4">
-              <input name="name" placeholder="Your Name" className="input" />
+              <input
+                name="name"
+                placeholder="Your Name"
+                className="input"
+                onFocus={executeRecaptcha}
+              />
               {formErrors.name && (
                 <p className="error-message">{formErrors.name}</p>
               )}
