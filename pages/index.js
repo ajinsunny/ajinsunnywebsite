@@ -9,7 +9,7 @@ const Avatar = lazy(() => import("../components/Avatar"));
 const Home = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <div className="bg-primary/60 h-full">
+      <div className="bg-primary/60 h-full w-full">
         {/* text */}
         <div className="w-full h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10">
           <div className="text-center flex flex-col justify-center xl:pt-40 xl:text-left h-full container mx-auto">
@@ -46,8 +46,8 @@ const Home = () => {
                   >
                     <path
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeWidth="2"
                       d="M1 10c1.5 1.5 5.25 3 9 3s7.5-1.5 9-3m-9-1h.01M2 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1ZM14 5V3a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v2h8Z"
                     />
                   </svg>
@@ -58,16 +58,14 @@ const Home = () => {
           </div>
         </div>
         {/* image */}
-        <div className="w-[1200px] h-full absolute right-0 bottom-0">
-          <BackgroundImage
-            src="/bg-explosion.webp"
-            alt="Background"
-            className="mix-blend-color-dodge"
-          />
-          {/* avatar img */}
-          <div className="w-full h-full max-w-[525px] max-h-[650px] absolute -bottom-32 lg:bottom-0 lg:right-[15%]">
-            <Avatar />
-          </div>
+        <BackgroundImage
+          src="/bg-explosion.webp"
+          alt="Background"
+          className="mix-blend-color-dodge"
+        />
+        {/* avatar img */}
+        <div className="w-full h-full max-w-[525px] max-h-[650px] absolute -bottom-32 lg:bottom-0 lg:right-[15%]">
+          <Avatar />
         </div>
       </div>
     </Suspense>

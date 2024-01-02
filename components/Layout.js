@@ -96,7 +96,7 @@ const Layout = ({ children }) => {
           >
             {navData.map((link, index) => {
               return (
-                <Link href={link.path} key={index}>
+                <Link href={link.path} key={index} aria-label={link.name}>
                   {/* tooltip */}
                   <div className="group">
                     {link.icon}
