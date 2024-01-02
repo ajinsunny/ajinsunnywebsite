@@ -15,7 +15,11 @@ export default function NotFound() {
           Sorry, that page can&apos;t be found
         </h2>
         <h3 className=" text-2xl font-bold dark:text-white">
-          Go back to the <Link href="/"> Homepage</Link>
+          Go back to the{" "}
+          <Link href="/" aria-label="Home">
+            {" "}
+            Homepage
+          </Link>
         </h3>
       </div>
     </div>

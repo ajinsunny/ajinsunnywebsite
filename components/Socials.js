@@ -4,7 +4,10 @@ import Link from "next/link";
 const SocialsComponent = () => {
   return (
     <div className="flex items-center gap-x-5 text-lg">
-      <Link href={"https://www.youtube.com/channel/UCfg_jh0JuDJOQdCKS3W9e4g"}>
+      <Link
+        href={"https://www.youtube.com/channel/UCfg_jh0JuDJOQdCKS3W9e4g"}
+        aria-label="Youtube"
+      >
         <svg
           className="w-[22px] h-[22px] hover:text-accent duration-700 text-gray-800 dark:text-white"
           aria-hidden="true"
@@ -19,7 +22,7 @@ const SocialsComponent = () => {
           />
         </svg>
       </Link>
-      <Link href={"https://twitter.com/_ajinsunny_"}>
+      <Link href={"https://twitter.com/_ajinsunny_"} aria-label="Twitter">
         <svg
           className="w-[22px] h-[22px] hover:text-accent duration-700 text-gray-800 dark:text-white"
           aria-hidden="true"
@@ -33,7 +36,7 @@ const SocialsComponent = () => {
           />
         </svg>
       </Link>
-      <Link href={"https://github.com/ajinsunny"}>
+      <Link href={"https://github.com/ajinsunny"} aria-label="Github">
         <svg
           className="w-[22px] h-[22px] hover:text-accent duration-700 text-gray-800 dark:text-white"
           aria-hidden="true"
@@ -48,7 +51,7 @@ const SocialsComponent = () => {
           />
         </svg>
       </Link>
-      <Link href={"https://medium.com/@ajin.sunny"}>
+      <Link href={"https://medium.com/@ajin.sunny"} aria-label="Medium">
         <svg
           className="w-[22px] h-[22px] hover:text-accent duration-700 text-gray-800 dark:text-white"
           aria-hidden="true"
@@ -59,7 +62,10 @@ const SocialsComponent = () => {
           <path d="M45.049,14c12.011,0 12.951,0.94 12.951,12.951v18.098c0,12.011 -0.94,12.951 -12.951,12.951h-18.098c-12.011,0 -12.951,-0.94 -12.951,-12.951v-18.098c0,-12.011 0.94,-12.951 12.951,-12.951zM29.713,44.151c4.502,0 8.151,-3.649 8.151,-8.151c0,-4.502 -3.649,-8.151 -8.151,-8.151c-4.502,0 -8.151,3.649 -8.151,8.151c0,4.502 3.65,8.151 8.151,8.151zM42.713,43.757c2.228,0 4.034,-3.473 4.034,-7.757c0,-4.284 -1.806,-7.757 -4.034,-7.757c-2.228,0 -4.034,3.473 -4.034,7.757c0,4.284 1.806,7.757 4.034,7.757zM48.98,42.928c0.775,0 1.403,-3.102 1.403,-6.928c0,-3.826 -0.628,-6.928 -1.403,-6.928c-0.775,0 -1.403,3.102 -1.403,6.928c0,3.826 0.628,6.928 1.403,6.928z" />
         </svg>
       </Link>
-      <Link href={"https://www.linkedin.com/in/ajinsunny/"}>
+      <Link
+        href={"https://www.linkedin.com/in/ajinsunny/"}
+        aria-label="LinkedIn"
+      >
         <svg
           className="w-[22px] h-[22px] hover:text-accent duration-700 text-gray-800 dark:text-white"
           aria-hidden="true"
