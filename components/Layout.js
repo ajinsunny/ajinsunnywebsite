@@ -96,7 +96,7 @@ const Layout = ({ children }) => {
           >
             {navData.map((link, index) => {
               return (
-                <Link href={link.path} key={index}>
+                <Link href={link.path} key={index} aria-label={link.name}>
                   {/* tooltip */}
                   <div className="group">
                     {link.icon}
@@ -123,7 +123,7 @@ const Layout = ({ children }) => {
           <div className="container mx-auto">
             <div className="flex flex-col lg:flex-row justify-between items-center gap-y-6 py-8">
               {/* logo */}
-              <Link href={"/"}>
+              <Link href={"/"} aria-label="Home">
                 <Image
                   src={"/logo.svg"}
                   width={200}
