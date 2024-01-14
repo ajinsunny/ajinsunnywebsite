@@ -4,19 +4,24 @@ export const workSlider = {
     {
       images: [
         {
-          title: "title",
+          title: "Fleet Management System",
           url: "https://main.d2tmvp8ck6o5qe.amplifyapp.com/",
           path: "/fms.webp",
         },
         {
-          title: "title",
-          url: "https://master.d1nxrghcrd1dfg.amplifyapp.com/",
-          path: "/tasktrackervue.webp",
+          title: "EV Charging Station Finder",
+          url: "https://ev-chargerfinder.vercel.app/",
+          path: "/evchargefinder.webp",
         },
         {
-          title: "title",
+          title: "Nextjs Dashboard",
           url: "https://nextjs-dashboard-ajinsunny.vercel.app/",
           path: "/acme.webp",
+        },
+        {
+          title: "Animation Cursor",
+          url: "https://github.com/ajinsunny/animated-cursor",
+          path: "/animation.gif",
         },
       ],
     },
@@ -52,7 +57,7 @@ const WorkSlider = () => {
       {workSlider.slides.map((slide, index) => {
         return (
           <SwiperSlide key={index}>
-            <div className="grid grid-cols-2 grid-rows-2 gap-4 cursor-pointer">
+            <div className="grid grid-cols-2 grid-rows-2 gap-7 cursor-pointer">
               {slide.images.map((image, index) => {
                 return (
                   <div
