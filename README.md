@@ -11,4 +11,4 @@ Here are the results
 
 
 
-built by Next.js powered by React.
+built by Next.js powered by React
