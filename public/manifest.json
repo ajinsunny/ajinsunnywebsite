@@ -1,0 +1,21 @@
+{
+  "name": "Ajin Sunny Portfolio",
+  "short_name": "Ajin Sunny",
+  "description": "Portfolio website showcasing work, projects, and contact information",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#131424",
+  "theme_color": "#131424",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

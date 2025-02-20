@@ -1,8 +1,26 @@
 "use client";
 
 import React, { useState } from "react";
-import { FaHtml5, FaCss3, FaJs, FaReact } from "react-icons/fa";
-import { SiNextdotjs, SiFramer } from "react-icons/si";
+import {
+  FaHtml5,
+  FaCss3,
+  FaJs,
+  FaReact,
+  FaNode,
+  FaPython,
+  FaAws,
+  FaDocker,
+  FaGitAlt,
+} from "react-icons/fa";
+import {
+  SiNextdotjs,
+  SiFramer,
+  SiTypescript,
+  SiTailwindcss,
+  SiFastapi,
+  SiPostgresql,
+  SiMicrosoftazure,
+} from "react-icons/si";
 import Avatar from "../../components/Avatar";
 import CountUp from "react-countup";
 
@@ -24,14 +42,29 @@ export const aboutData: AboutSection[] = [
     title: "skills",
     info: [
       {
-        title: "Web Development",
+        title: "Frontend",
         icons: [
-          <FaHtml5 key="html5" />,
-          <FaCss3 key="css3" />,
-          <FaJs key="javascript" />,
+          <SiTypescript key="typescript" />,
           <FaReact key="react" />,
           <SiNextdotjs key="nextjs" />,
           <SiFramer key="framer" />,
+          <SiTailwindcss key="tailwind" />,
+        ],
+      },
+      {
+        title: "Backend",
+        icons: [
+          <FaNode key="nodejs" />,
+          <FaPython key="python" />,
+          <SiPostgresql key="postgresql" />,
+        ],
+      },
+      {
+        title: "Infrastructure & DevOps",
+        icons: [
+          <FaAws key="aws" />,
+          <SiMicrosoftazure key="azure" />,
+          <FaGitAlt key="git" />,
         ],
       },
     ],
@@ -40,15 +73,15 @@ export const aboutData: AboutSection[] = [
     title: "experience",
     info: [
       {
-        title: "MindPetal Sofwtare Solutions - Software Engineer",
+        title: "MindPetal - Senior AI Software Engineer",
         stage: "2021 - Present",
       },
       {
-        title: "Full-Stack Software Engineer - Outco Inc.",
+        title: "Outco Inc - Full Stack Software Engineer",
         stage: "2020 - 2021",
       },
       {
-        title: "Embedded Software Developer - NASA Kentucky",
+        title: "NASA Kentucky - Embedded Software Engineer",
         stage: "2017 - 2019",
       },
     ],
@@ -59,13 +92,13 @@ export const aboutData: AboutSection[] = [
       {
         title: (
           <a
-            href="https://triplebyte.com/tb/ajin-sunny-5davdag/certificate"
+            href="https://university.atlassian.com/student/award/NYW4PukCkuALHNFhEH57rsY4"
             style={{ textDecoration: "underline" }}
           >
-            Triple Byte Certified Software Engineer - Triple Byte
+            Atlassian Jira Fundamentals Badge - Atlassian University
           </a>
         ),
-        stage: "2023",
+        stage: "2024",
       },
       {
         title: (

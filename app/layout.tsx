@@ -1,9 +1,8 @@
 // app/layout.tsx
-import "../styles/globals.css"; // Global CSS
-import Layout from "../components/Layout"; // Your custom layout component
+import "../styles/globals.css";
+import Layout from "../components/Layout";
 import type { ReactNode } from "react";
 
-// Metadata replaces <Head> content from _document.js
 export const metadata = {
   title: "Ajin Sunny",
   description:
@@ -15,14 +14,21 @@ export const metadata = {
   },
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#131424",
+};
+
 interface RootLayoutProps {
   children: ReactNode;
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className="scroll-smooth">
+      <body className="antialiased">
         <Layout>{children}</Layout>
       </body>
     </html>

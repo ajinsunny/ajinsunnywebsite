@@ -4,7 +4,6 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
-// Define the type for navigation data (optional, for extra type safety)
 interface NavItem {
   name: string;
   path: string;
@@ -17,7 +16,7 @@ export const navData: NavItem[] = [
     path: "/",
     icon: (
       <svg
-        className="w-5 h-5 text-gray-800 dark:text-white hover:text-accent duration-700"
+        className="w-6 h-6"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
@@ -32,7 +31,7 @@ export const navData: NavItem[] = [
     path: "/about",
     icon: (
       <svg
-        className="w-5 h-5 text-gray-800 dark:text-white hover:text-accent duration-700"
+        className="w-6 h-6"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
@@ -47,7 +46,7 @@ export const navData: NavItem[] = [
     path: "/contact",
     icon: (
       <svg
-        className="w-5 h-5 hover:text-accent duration-700 text-gray-800 dark:text-white"
+        className="w-6 h-6"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
@@ -60,9 +59,6 @@ export const navData: NavItem[] = [
   },
 ];
 
-const Socials = lazy(() => import("./Socials"));
-
-// Define a prop type for the Layout component
 interface LayoutProps {
   children: ReactNode;
 }
@@ -82,21 +78,26 @@ const Layout = ({ children }: LayoutProps) => {
 
       <Suspense fallback={<div>Loading...</div>}>
         {/* Navigation */}
-        <nav className="flex flex-col items-center xl:justify-center gap-y-4 fixed h-max bottom-0 mt-auto xl:right-[2%] z-50 top-0 w-full xl:w-16 xl:max-w-md xl:h-screen">
+        <nav className="fixed bottom-0 w-full xl:w-16 xl:max-w-md xl:right-[2%] z-50 xl:top-0 xl:h-screen">
           <div
-            className="flex w-full xl:flex-col items-center justify-between xl:justify-center gap-y-10 px-4 md:px-40 xl:px-0 h-[80px] xl:h-max py-8 bg-white/10
-      backdrop-blur-sm text-3xl xl:text-xl xl:rounded-full"
+            className="flex w-full xl:flex-col items-center justify-center xl:justify-center gap-x-20 xl:gap-y-12 
+            px-4 md:px-40 xl:px-0 h-[80px] xl:h-max py-6 
+            bg-primary/90 xl:bg-white/10 backdrop-blur-sm 
+            border-t xl:border-t-0 border-white/20
+            xl:rounded-full xl:mt-[30vh]"
           >
             {navData.map((link, index) => (
               <Link href={link.path} key={index} aria-label={link.name}>
-                <div className="group relative">
-                  {link.icon}
-                  <div className="absolute pr-14 right-0 hidden group-hover:flex">
+                <div className="group relative flex items-center">
+                  <div className="text-white hover:text-accent duration-700">
+                    {link.icon}
+                  </div>
+                  <div className="absolute pr-14 right-0 hidden xl:group-hover:flex">
                     <div className="bg-white relative flex text-primary items-center p-[6px] rounded-[3px]">
                       <div className="text-[12px] leading-none font-semibold capitalize">
                         {link.name}
                       </div>
-                      <div className="border-solid border-l-white border-l-8 border-y-transparent border-y-[6px] border-r-0 absolute -right-2"></div>
+                      <div className="border-solid border-l-white border-l-8 border-y-transparent border-y-[6px] border-r-0 absolute -right-2" />
                     </div>
                   </div>
                 </div>
@@ -106,22 +107,33 @@ const Layout = ({ children }: LayoutProps) => {
         </nav>
 
         {/* Header */}
-        <header className="absolute z-30 w-full flex items-center px-16 xl:px-0 xl:h-[90px]">
-          <div className="container mx-auto">
-            <div className="flex flex-col lg:flex-row justify-between items-center gap-y-6 py-8">
+        <header className="absolute z-30 w-full">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-center lg:justify-start pt-16 sm:pt-20 lg:pt-8">
               <Link href="/" aria-label="Home">
-                <Image
-                  src="/logo.svg"
-                  width={200}
-                  height={50}
-                  alt="Ajin Sunny Logo"
-                  priority
-                  className="logo"
-                />
+                {/* Mobile Logo */}
+                <div className="block lg:hidden">
+                  <Image
+                    src="/logo-mobile.svg"
+                    width={350}
+                    height={100}
+                    alt="Ajin Sunny Logo"
+                    priority
+                    className="w-[300px] sm:w-[350px] h-auto object-contain"
+                  />
+                </div>
+                {/* Desktop Logo */}
+                <div className="hidden lg:block">
+                  <Image
+                    src="/logo-desktop.svg"
+                    width={800}
+                    height={200}
+                    alt="Ajin Sunny Logo"
+                    priority
+                    className="w-[300px] xl:w-[400px] h-auto object-contain"
+                  />
+                </div>
               </Link>
-              <Suspense fallback={<div>Loading Socials...</div>}>
-                <Socials />
-              </Suspense>
             </div>
           </div>
         </header>
