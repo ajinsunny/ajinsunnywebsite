@@ -1,6 +1,14 @@
 import Image from "next/image";
+import { HTMLAttributes } from "react";
 
-const BackgroundImage = ({ src, alt, ...props }) => {
+// Define the props interface
+interface BackgroundImageProps extends HTMLAttributes<HTMLDivElement> {
+  src: string; // Type for the image source
+  alt: string; // Type for the alt text
+}
+
+// Use the interface in the component
+const BackgroundImage = ({ src, alt, ...props }: BackgroundImageProps) => {
   return (
     <div className="w-full h-full" {...props}>
       <Image

@@ -1,5 +1,38 @@
-// work slider data
-export const workSlider = {
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+import "swiper/css/navigation"; // Import navigation styles
+
+// Import required modules
+import { Pagination, Navigation } from "swiper";
+
+// Icons
+import { BsArrowRight } from "react-icons/bs";
+// Next.js Image component
+import Image from "next/image";
+
+// Define the interface for an image item
+interface WorkImage {
+  title: string;
+  url: string;
+  path: string;
+}
+
+// Define the structure of workSlider
+interface WorkSlide {
+  images: WorkImage[];
+}
+
+interface WorkSliderData {
+  slides: WorkSlide[];
+}
+
+// Work slider data
+export const workSlider: WorkSliderData = {
   slides: [
     {
       images: [
@@ -33,26 +66,10 @@ export const workSlider = {
     },
   ],
 };
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/pagination";
-import "swiper/css/navigation"; // Import navigation styles
-
-// Import required modules
-import { Pagination, Navigation } from "swiper";
-
-// Icons
-import { BsArrowRight } from "react-icons/bs";
-// Next.js Image component
-import Image from "next/image";
 
 // Function to chunk images into groups of four
-const chunkArray = (array, size) => {
-  const result = [];
+const chunkArray = (array: WorkImage[], size: number): WorkImage[][] => {
+  const result: WorkImage[][] = [];
   for (let i = 0; i < array.length; i += size) {
     result.push(array.slice(i, i + size));
   }

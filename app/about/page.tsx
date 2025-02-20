@@ -37,7 +37,7 @@ interface AboutSection {
 }
 
 // About data array with type annotations
-export const aboutData: AboutSection[] = [
+const aboutData: AboutSection[] = [
   {
     title: "skills",
     info: [
