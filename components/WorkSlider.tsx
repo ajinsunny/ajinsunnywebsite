@@ -42,16 +42,6 @@ export const workSlider: WorkSliderData = {
           path: "/fms.webp",
         },
         {
-          title: "EV Charging Station Finder",
-          url: "https://ev-chargerfinder.vercel.app/",
-          path: "/evchargefinder.webp",
-        },
-        {
-          title: "Nextjs Dashboard",
-          url: "https://nextjs-dashboard-ajinsunny.vercel.app/",
-          path: "/acme.webp",
-        },
-        {
           title: "Animation Cursor",
           url: "https://github.com/ajinsunny/animated-cursor",
           path: "/animation.gif",
@@ -61,7 +51,6 @@ export const workSlider: WorkSliderData = {
           url: "https://www.saturday3rdserve.org/",
           path: "/homelessoutreach.png",
         },
-        // Add more images as needed
       ],
     },
   ],

@@ -3,6 +3,7 @@
 import { Suspense, lazy } from "react";
 import BackgroundImage from "../components/BackgroundImage";
 import LoadingSpinner from "../components/LoadingSpinner";
+import Link from "next/link";
 
 const Avatar = lazy(() => import("../components/Avatar"));
 
@@ -25,12 +26,20 @@ export default function HomePage() {
 
               {/* Call to action section */}
               <div className="mt-12 flex flex-col sm:flex-row justify-center lg:justify-start gap-6">
-                <button className="px-10 py-4 bg-accent text-white rounded-full hover:bg-accent/90 transition-colors">
-                  View Projects
-                </button>
-                <button className="px-10 py-4 border border-white/20 rounded-full hover:bg-white/10 transition-colors">
-                  Contact Me
-                </button>
+                <Link href="/work">
+                  <button className="px-10 py-4 bg-accent text-white rounded-full hover:bg-accent/90 transition-colors">
+                    View Projects
+                  </button>
+                </Link>
+                <a
+                  href="https://docs.google.com/document/d/1NVpmnywVhhY3nZeWlyeUkgPb63zyVQRxEs5PdYGsLkY/edit?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className="px-10 py-4 border border-white/20 rounded-full hover:bg-white/10 transition-colors">
+                    Resume
+                  </button>
+                </a>
               </div>
             </div>
           </div>
