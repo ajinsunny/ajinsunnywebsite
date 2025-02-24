@@ -37,14 +37,14 @@ export const workSlider: WorkSliderData = {
     {
       images: [
         {
-          title: "Fleet Management System",
-          url: "https://main.d2tmvp8ck6o5qe.amplifyapp.com/",
-          path: "/fms.webp",
-        },
-        {
           title: "Animation Cursor",
           url: "https://github.com/ajinsunny/animated-cursor",
           path: "/animation.gif",
+        },
+        {
+          title: "Fleet Management System",
+          url: "https://main.d2tmvp8ck6o5qe.amplifyapp.com/",
+          path: "/fms.webp",
         },
         {
           title: "DC Homeless Outreach",
