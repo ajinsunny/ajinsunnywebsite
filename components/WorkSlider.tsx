@@ -37,6 +37,11 @@ export const workSlider: WorkSliderData = {
     {
       images: [
         {
+          title: "Zensus",
+          url: "https://zensus.app",
+          path: "/zensus.webp",
+        },
+        {
           title: "Animation Cursor",
           url: "https://github.com/ajinsunny/animated-cursor",
           path: "/animation.gif",
