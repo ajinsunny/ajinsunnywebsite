@@ -54,7 +54,7 @@ export const workSlider: WorkSliderData = {
         {
           title: "DC Homeless Outreach",
           url: "https://www.saturday3rdserve.org/",
-          path: "/homelessoutreach.png",
+          path: "/homelessoutreach.jpg",
         },
       ],
     },
