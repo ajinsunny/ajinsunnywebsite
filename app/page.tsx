@@ -32,7 +32,7 @@ export default function HomePage() {
                   </button>
                 </Link>
                 <a
-                  href="https://docs.google.com/document/d/1NVpmnywVhhY3nZeWlyeUkgPb63zyVQRxEs5PdYGsLkY/edit?usp=sharing"
+                  href="https://docs.google.com/document/d/1rTVCddc-drK-TC1gLO3fvGZOJ3Vgtcb7MgxjB8vxTv8/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
