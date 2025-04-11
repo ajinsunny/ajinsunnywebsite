@@ -37,6 +37,11 @@ export const workSlider: WorkSliderData = {
     {
       images: [
         {
+          title: "EV Charger Finder",
+          url: "https://ev-chargerfinder.vercel.app/",
+          path: "/evchargefinder.webp",
+        },
+        {
           title: "Zensus",
           url: "https://zensus.app",
           path: "/zensus.webp",
