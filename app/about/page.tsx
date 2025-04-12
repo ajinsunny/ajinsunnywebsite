@@ -129,10 +129,7 @@ const About: React.FC = () => {
       <div className="container mx-auto h-full flex flex-col items-center xl:flex-row">
         {/* Text section */}
         <div className="flex-1 flex flex-col justify-center">
-          <h2 className="h2">
-            Narratives <span className="text-accent">Fuel</span> Breakthrough
-            Designs
-          </h2>
+          
           <p className="max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0">
             5 years ago, I began my journey as a software developer. I worked
             for a career accelerator startup, where I learned the basics of web
@@ -158,7 +155,7 @@ const About: React.FC = () => {
                   <CountUp start={0} end={2000} duration={3} /> +
                 </div>
                 <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
-                  Satisfied clients
+                  Code Reviews
                 </div>
               </div>
               {/* Projects counter */}
