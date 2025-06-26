@@ -27,7 +27,7 @@ export default function HomePage() {
           </div>
           {/* Tagline */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-center mb-8">
-            Optimizing for tomorrow's{' '}
+            Optimizing for tomorrow&apos;s{' '}
             <span className="text-accent animate-pulse">search engines</span>
           </h1>
           {/* Call to action section */}
