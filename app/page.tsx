@@ -4,8 +4,7 @@ import { Suspense, lazy } from "react";
 import BackgroundImage from "../components/BackgroundImage";
 import LoadingSpinner from "../components/LoadingSpinner";
 import Link from "next/link";
-
-const Avatar = lazy(() => import("../components/Avatar"));
+import Image from "next/image";
 
 export default function HomePage() {
   return (
@@ -14,34 +13,39 @@ export default function HomePage() {
         {/* Background gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-black/30 to-black/10" />
 
-        {/* Content container */}
-        <div className="relative z-10 px-8 sm:px-12 lg:px-16">
-          <div className="flex flex-col justify-center min-h-screen">
-            <div className="text-center lg:text-left max-w-4xl mx-auto lg:mx-12 pt-20 lg:pt-40">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-                Digitally Drafting <br className="hidden sm:block" />
-                Your Ideas Into{" "}
-                <span className="text-accent animate-pulse">Execution</span>
-              </h1>
-
-              {/* Call to action section */}
-              <div className="mt-12 flex flex-col sm:flex-row justify-center lg:justify-start gap-6">
-                <Link href="/work">
-                  <button className="px-10 py-4 bg-accent text-white rounded-full hover:bg-accent/90 transition-colors">
-                    View Projects
-                  </button>
-                </Link>
-                <a
-                  href="https://docs.google.com/document/d/1rTVCddc-drK-TC1gLO3fvGZOJ3Vgtcb7MgxjB8vxTv8/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button className="px-10 py-4 border border-white/20 rounded-full hover:bg-white/10 transition-colors">
-                    Resume
-                  </button>
-                </a>
-              </div>
-            </div>
+        {/* Content container - vertically and horizontally centered */}
+        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full pt-32">
+          {/* SEO Metrics Image */}
+          <div className="relative w-[420px] h-[236px] sm:w-[600px] sm:h-[338px] lg:w-[700px] lg:h-[394px] mb-8">
+            <Image
+              src="/seo-metrics.webp"
+              alt="SEO Metrics"
+              fill
+              className="rounded-3xl border-4 border-accent shadow-2xl opacity-95 object-contain bg-white/10"
+              priority
+            />
+          </div>
+          {/* Tagline */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-center mb-8">
+            Optimizing for tomorrow's{' '}
+            <span className="text-accent animate-pulse">search engines</span>
+          </h1>
+          {/* Call to action section */}
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
+            <Link href="/work">
+              <button className="px-10 py-4 bg-accent text-white rounded-full hover:bg-accent/90 transition-colors">
+                View Projects
+              </button>
+            </Link>
+            <a
+              href="https://docs.google.com/document/d/1rTVCddc-drK-TC1gLO3fvGZOJ3Vgtcb7MgxjB8vxTv8/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="px-10 py-4 border border-white/20 rounded-full hover:bg-white/10 transition-colors">
+                Resume
+              </button>
+            </a>
           </div>
         </div>
 
@@ -51,17 +55,6 @@ export default function HomePage() {
           alt="Background Effect"
           className="absolute inset-0 object-cover mix-blend-color-dodge opacity-60 sm:opacity-80"
         />
-
-        {/* Avatar */}
-        <div
-          className="absolute w-full max-w-[300px] sm:max-w-[400px] lg:max-w-[525px] 
-                      h-[400px] sm:h-[500px] lg:h-[650px] 
-                      -bottom-16 sm:-bottom-24 lg:bottom-0 
-                      left-1/2 lg:left-auto lg:right-[15%] 
-                      transform -translate-x-1/2 lg:translate-x-0"
-        >
-          <Avatar />
-        </div>
       </div>
     </Suspense>
   );
