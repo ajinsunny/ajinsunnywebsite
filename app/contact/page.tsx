@@ -51,7 +51,6 @@ const Contact: React.FC = () => {
     const form = e.currentTarget;
     const nameInput = form.elements.namedItem("name") as HTMLInputElement;
     const emailInput = form.elements.namedItem("email") as HTMLInputElement;
-    const subjectInput = form.elements.namedItem("subject") as HTMLInputElement;
     const messageInput = form.elements.namedItem(
       "message"
     ) as HTMLTextAreaElement;
@@ -59,7 +58,7 @@ const Contact: React.FC = () => {
     const formData = {
       name: nameInput?.value || "",
       email: emailInput?.value || "",
-      subject: subjectInput?.value || "",
+      subject: "Contact Form Submission",
       message: messageInput?.value || "",
       recaptchaToken,
     };
@@ -100,83 +99,103 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="h-full bg-primary/30">
+    <div className="h-screen bg-gradient-to-b from-primary via-primary/95 to-primary/80 flex items-center justify-center overflow-hidden pt-20">
       <Script
         src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
         strategy="afterInteractive"
       />
-      <div className="container mx-auto py-32 text-center xl:text-left flex items-center justify-center h-full">
-        {/* Text & Form */}
-        <div className="flex flex-col w-full max-w-[700px]">
-          <h2 className="h2 text-center mb-12">
-            Let&apos;s <span className="text-accent">connect.</span>
-          </h2>
-          <form onSubmit={handleFormSubmit}>
-            {/* Name Input */}
-            <div className="flex flex-col w-full mb-4">
-              <input
-                name="name"
-                placeholder="Your Name"
-                className="input"
-                onFocus={executeRecaptcha}
-              />
-              {formErrors.name && (
-                <p className="error-message">{formErrors.name}</p>
-              )}
-            </div>
-            {/* Email Input */}
-            <div className="flex flex-col w-full mb-4">
-              <input
-                type="email"
-                name="email"
-                placeholder="Your email address"
-                className="input"
-              />
-              {formErrors.email && (
-                <p className="error-message">{formErrors.email}</p>
-              )}
-            </div>
-            {/* Subject Input */}
-            <div className="flex flex-col w-full mb-4">
-              <input
-                type="text"
-                name="subject"
-                placeholder="Topic of your message"
-                className="input"
-              />
-              {formErrors.subject && (
-                <p className="error-message">{formErrors.subject}</p>
-              )}
-            </div>
-            {/* Message Input */}
-            <div className="flex flex-col w-full mb-4">
-              <textarea
-                name="message"
-                placeholder="Hi Ajin, I'd like to talk about..."
-                className="textarea"
-                onKeyDown={handleTabInTextarea}
-              ></textarea>
-              {formErrors.message && (
-                <p className="error-message">{formErrors.message}</p>
-              )}
-            </div>
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={isAnimating}
-              id="rewardId"
-              className="btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group"
-            >
-              <span className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500">
-                Let&apos;s talk
-              </span>
-              <BsArrowRight className="-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]" />
-            </button>
-          </form>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">
+              Let&apos;s <span className="text-accent">connect.</span>
+            </h1>
+            <p className="text-white/70 text-base">
+              Have a project in mind? I&apos;d love to hear from you.
+            </p>
+          </div>
+
+          {/* Form Card */}
+          <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 md:p-8 shadow-2xl">
+            <form onSubmit={handleFormSubmit} className="space-y-4">
+              {/* Name Input */}
+              <div className="space-y-1.5">
+                <label htmlFor="name" className="block text-white/90 text-sm font-medium">
+                  Name
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Your Name"
+                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/50 transition-all duration-300"
+                  onFocus={executeRecaptcha}
+                  required
+                />
+                {formErrors.name && (
+                  <p className="text-accent text-sm mt-1">{formErrors.name}</p>
+                )}
+              </div>
+
+              {/* Email Input */}
+              <div className="space-y-1.5">
+                <label htmlFor="email" className="block text-white/90 text-sm font-medium">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="your.email@example.com"
+                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/50 transition-all duration-300"
+                  required
+                />
+                {formErrors.email && (
+                  <p className="text-accent text-sm mt-1">{formErrors.email}</p>
+                )}
+              </div>
+
+              {/* Message Input */}
+              <div className="space-y-1.5">
+                <label htmlFor="message" className="block text-white/90 text-sm font-medium">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  placeholder="Hi Ajin, I'd like to talk about..."
+                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/50 transition-all duration-300 resize-none"
+                  onKeyDown={handleTabInTextarea}
+                  required
+                ></textarea>
+                {formErrors.message && (
+                  <p className="text-accent text-sm mt-1">{formErrors.message}</p>
+                )}
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={isAnimating}
+                id="rewardId"
+                className="group relative w-full sm:w-auto px-8 py-3 bg-accent text-white rounded-full font-medium text-base hover:bg-accent/90 transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <span className="group-hover:-translate-x-1 transition-transform duration-300">
+                  Let&apos;s talk
+                </span>
+                <BsArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
+              </button>
+            </form>
+          </div>
         </div>
+
         {/* Popup Notification */}
         {showPopup && (
-          <div className="popup">Your message has been sent successfully!</div>
+          <div className="fixed top-8 left-1/2 transform -translate-x-1/2 bg-accent text-white px-8 py-4 rounded-full shadow-2xl animate-bounce z-50">
+            Your message has been sent successfully!
+          </div>
         )}
       </div>
     </div>
