@@ -39,6 +39,14 @@ const projects: Project[] = [
     url: "https://main.d2tmvp8ck6o5qe.amplifyapp.com/",
     techStack: ["React", "AWS", "Node.js"],
   },
+  {
+    title: "Contact Info",
+    description:
+      "Modern contact information management system with intuitive interface",
+    image: "/contactinfo.webp",
+    url: "https://contactinfo-two.vercel.app/",
+    techStack: ["React", "Next.js", "TypeScript"],
+  },
 ];
 
 const FeaturedProjects = () => {

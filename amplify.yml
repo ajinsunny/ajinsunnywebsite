@@ -1,0 +1,19 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm install 20 # Install Node.js 20
+        - nvm use 20 # Switch to Node.js 20
+        - rm -rf node_modules package-lock.json # Force a full rebuild
+        - npm install # Use npm install instead of npm ci for this build
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
