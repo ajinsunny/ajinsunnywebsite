@@ -84,14 +84,14 @@ const HeroSection = () => {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
+            <div className="flex flex-col items-center lg:items-start gap-4 md:gap-6">
               {/* Primary CTA - Scroll to Projects */}
               <button 
                 onClick={() => {
                   const projectsSection = document.getElementById('featured-projects');
                   projectsSection?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="group relative px-8 py-4 bg-accent text-white rounded-full font-medium text-lg hover:bg-accent/90 transition-all duration-300 flex items-center justify-center gap-2 min-w-[200px]"
+                className="group relative px-8 py-4 bg-accent text-white rounded-full font-medium text-lg hover:bg-accent/90 transition-all duration-300 flex items-center justify-center gap-2 w-auto sm:min-w-[200px]"
               >
                 <span>View Projects</span>
                 <BsArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -102,8 +102,9 @@ const HeroSection = () => {
                 href="https://docs.google.com/document/d/1rTVCddc-drK-TC1gLO3fvGZOJ3Vgtcb7MgxjB8vxTv8/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="w-auto sm:w-auto"
               >
-                <button className="group relative px-8 py-4 border-2 border-white/30 text-white rounded-full font-medium text-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 flex items-center justify-center gap-2 min-w-[200px]">
+                <button className="group relative px-8 py-4 border-2 border-white/30 text-white rounded-full font-medium text-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 flex items-center justify-center gap-2 w-auto sm:min-w-[200px]">
                   <BsDownload className="group-hover:translate-y-1 transition-transform" />
                   <span>Resume</span>
                 </button>
