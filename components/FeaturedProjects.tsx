@@ -47,6 +47,14 @@ const projects: Project[] = [
     url: "https://contactinfo-two.vercel.app/",
     techStack: ["React", "Next.js", "TypeScript"],
   },
+  {
+    title: "Sentim Analyzer",
+    description:
+      "AI-powered sentiment analysis tool for analyzing text emotions and opinions",
+    image: "/sentim-analyzer.webp",
+    url: "https://sentim-analyzer.vercel.app/",
+    techStack: ["React", "Next.js", "AI/ML", "NLP"],
+  },
 ];
 
 const FeaturedProjects = () => {
