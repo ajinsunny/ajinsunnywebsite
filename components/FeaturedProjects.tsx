@@ -18,10 +18,10 @@ const projects: Project[] = [
   {
     title: "Zensus",
     description:
-      "AI-powered search and analytics platform optimizing data discovery",
+      "Financial intelligence platform powered by consensus AI. Specialized agents collaborate to provide financial guidance",
     image: "/zensus.webp",
     url: "https://zensus.app",
-    techStack: ["React", "Next.js", "AI/ML", "PostgreSQL"],
+    techStack: ["iOS SwiftUI", "NestJS", "AI/ML", "PostgreSQL"],
   },
   {
     title: "EV Charger Finder",
