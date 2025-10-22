@@ -24,6 +24,14 @@ const projects: Project[] = [
     techStack: ["iOS SwiftUI", "NestJS", "AI/ML", "PostgreSQL"],
   },
   {
+    title: "Market Signal",
+    description:
+      "Real-time market analysis and trading signals platform for informed investment decisions",
+    image: "/marketsignal.webp",
+    url: "https://marketsignal-git-master-ajinsunnys-projects.vercel.app/",
+    techStack: ["React", "Next.js", "TypeScript", "Market Data API"],
+  },
+  {
     title: "EV Charger Finder",
     description:
       "Location-based service helping users find electric vehicle charging stations",
