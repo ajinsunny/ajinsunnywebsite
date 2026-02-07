@@ -1,123 +1,49 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  FaHtml5,
-  FaCss3,
-  FaJs,
-  FaReact,
-  FaNode,
-  FaPython,
-  FaAws,
-  FaDocker,
-  FaGitAlt,
-} from "react-icons/fa";
-import {
-  SiNextdotjs,
-  SiFramer,
-  SiTypescript,
-  SiTailwindcss,
-  SiFastapi,
-  SiPostgresql,
-  SiMicrosoftazure,
-} from "react-icons/si";
+import Image from "next/image";
+import { BsArrowRight } from "react-icons/bs";
 import Avatar from "../../components/Avatar";
 import CountUp from "react-countup";
+import { aboutData } from "../../data/about";
+import { CredentialCard } from "../../data/types";
 
-// Define interfaces for type safety
-interface AboutInfo {
-  title: React.ReactNode;
-  stage?: string;
-  icons?: React.ReactNode[];
-}
-
-interface AboutSection {
-  title: string;
-  info: AboutInfo[];
-}
-
-// About data array with type annotations
-const aboutData: AboutSection[] = [
-  {
-    title: "skills",
-    info: [
-      {
-        title: "Frontend",
-        icons: [
-          <SiTypescript key="typescript" />,
-          <FaReact key="react" />,
-          <SiNextdotjs key="nextjs" />,
-          <SiFramer key="framer" />,
-          <SiTailwindcss key="tailwind" />,
-        ],
-      },
-      {
-        title: "Backend",
-        icons: [
-          <FaNode key="nodejs" />,
-          <FaPython key="python" />,
-          <SiPostgresql key="postgresql" />,
-        ],
-      },
-      {
-        title: "Infrastructure & DevOps",
-        icons: [
-          <FaAws key="aws" />,
-          <SiMicrosoftazure key="azure" />,
-          <FaGitAlt key="git" />,
-        ],
-      },
-    ],
-  },
-  {
-    title: "experience",
-    info: [
-      {
-        title: "MindPetal - Senior AI Software Engineer",
-        stage: "2021 - Present",
-      },
-      {
-        title: "Outco Inc - Full Stack Software Engineer",
-        stage: "2020 - 2021",
-      },
-      {
-        title: "NASA Kentucky - Embedded Software Engineer",
-        stage: "2017 - 2019",
-      },
-    ],
-  },
-  {
-    title: "credentials",
-    info: [
-      {
-        title: (
-          <a
-            href="https://university.atlassian.com/student/award/NYW4PukCkuALHNFhEH57rsY4"
-            style={{ textDecoration: "underline" }}
-          >
-            Atlassian Jira Fundamentals Badge - Atlassian University
-          </a>
-        ),
-        stage: "2024",
-      },
-      {
-        title: (
-          <a
-            href="https://coursera.org/share/47e2de8cbcf7ccf2768a6dcb0e602965"
-            style={{ textDecoration: "underline" }}
-          >
-            Software Product Management Certificate - University of Alberta
-          </a>
-        ),
-        stage: "2022",
-      },
-    ],
-  },
-];
+// Credential Card Content Component
+const CredentialCardContent = ({ credential }: { credential: CredentialCard }) => {
+  return (
+    <>
+      <div className="relative h-48 overflow-hidden bg-white/10">
+        <Image
+          src={credential.image}
+          alt={credential.title}
+          fill
+          className="object-cover group-hover:scale-110 transition-transform duration-500"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+      </div>
+      <div className="p-6">
+        <h3 className="text-lg font-bold text-white mb-1 group-hover:text-accent transition-colors">
+          {credential.title}
+        </h3>
+        <p className="text-white/70 text-sm mb-3">
+          {credential.organization}
+        </p>
+        <div className="flex items-center justify-between">
+          <span className="text-white/60 text-sm">{credential.date}</span>
+          {credential.url && (
+            <div className="flex items-center gap-2 text-accent group-hover:gap-3 transition-all">
+              <span className="text-sm font-medium">View</span>
+              <BsArrowRight className="group-hover:translate-x-1 transition-transform" />
+            </div>
+          )}
+        </div>
+      </div>
+    </>
+  );
+};
 
 const About: React.FC = () => {
   const [index, setIndex] = useState<number>(0);
-  console.log(index);
 
   return (
     <div className="h-full bg-primary/30 py-24 text-center xl:text-left">
@@ -129,7 +55,7 @@ const About: React.FC = () => {
       <div className="container mx-auto h-full flex flex-col items-center xl:flex-row">
         {/* Text section */}
         <div className="flex-1 flex flex-col justify-center">
-          
+
           <p className="max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0">
             5 years ago, I began my journey as a software developer. I worked
             for a career accelerator startup, where I learned the basics of web
@@ -189,25 +115,50 @@ const About: React.FC = () => {
           </div>
           {/* Info details */}
           <div className="py-2 xl:py-6 flex flex-col gap-y-2 xl:gap-y-4 items-center xl:items-start">
-            {aboutData[index].info.map((item, itemIndex) => (
-              <div
-                key={itemIndex}
-                className="flex-1 flex flex-col md:flex-row max-w-max gap-x-2 items-center text-white/60"
-              >
-                {/* Title */}
-                <div className="font-light mb-2 md:mb-0">{item.title}</div>
-                <div className="hidden md:flex">-</div>
-                <div>{item.stage}</div>
-                <div className="flex gap-x-4">
-                  {/* Icons */}
-                  {item.icons?.map((icon, iconIndex) => (
-                    <div key={iconIndex} className="text-2xl text-white">
-                      {icon}
+            {aboutData[index].credentials ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                {aboutData[index].credentials!.map((credential, credIndex) => (
+                  credential.url ? (
+                    <a
+                      key={credIndex}
+                      href={credential.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group block bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                    >
+                      <CredentialCardContent credential={credential} />
+                    </a>
+                  ) : (
+                    <div
+                      key={credIndex}
+                      className="bg-white/5 rounded-2xl overflow-hidden border border-white/10"
+                    >
+                      <CredentialCardContent credential={credential} />
                     </div>
-                  ))}
-                </div>
+                  )
+                ))}
               </div>
-            ))}
+            ) : (
+              aboutData[index].info?.map((item, itemIndex) => (
+                <div
+                  key={itemIndex}
+                  className="flex-1 flex flex-col md:flex-row max-w-max gap-x-2 items-center text-white/60"
+                >
+                  {/* Title */}
+                  <div className="font-light mb-2 md:mb-0">{item.title}</div>
+                  <div className="hidden md:flex">-</div>
+                  <div>{item.stage}</div>
+                  <div className="flex gap-x-4">
+                    {/* Icons */}
+                    {item.icons?.map((icon, iconIndex) => (
+                      <div key={iconIndex} className="text-2xl text-white">
+                        {icon}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>
