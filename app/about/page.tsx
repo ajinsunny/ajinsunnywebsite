@@ -17,6 +17,7 @@ const CredentialCardContent = ({ credential }: { credential: CredentialCard }) =
           src={credential.image}
           alt={credential.title}
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover group-hover:scale-110 transition-transform duration-500"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />

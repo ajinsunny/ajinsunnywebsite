@@ -8,7 +8,7 @@ const Avatar = () => {
         src={"/avatar.webp"}
         width={525}
         height={656}
-        alt=""
+        alt="Ajin Sunny Avatar"
         className="translate-z-0 w-full h-full"
         loading="eager"
       />

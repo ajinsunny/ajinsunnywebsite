@@ -74,18 +74,17 @@ Other data is defined as inline arrays within their components (no CMS):
 - Animation: `spin-slow` (6s linear infinite)
 - Plugins: tailwind-scrollbar, @tailwindcss/forms
 
-**Note:** `purgecss.config.js` references `./src/**/*` paths but project uses `app/` and `components/` directories — this config appears outdated and may not function correctly.
 
 ### Environment Variables
 
 Required for contact form functionality:
 - `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` - reCAPTCHA site key (client-side, used in Contact page)
-- `NEXT_PUBLIC_RECAPTCHA_SECRET_KEY` - reCAPTCHA secret key (server-side verification)
-- `NEXT_PUBLIC_SES_SMTP_USER` - AWS SES SMTP username
-- `NEXT_PUBLIC_SES_SMTP_PASSWORD` - AWS SES SMTP password
-- `NEXT_PUBLIC_RECEIVER_EMAIL` - Email recipient address
+- `RECAPTCHA_SECRET_KEY` - reCAPTCHA secret key (server-only, used in API route)
+- `SES_SMTP_USER` - AWS SES SMTP username (server-only)
+- `SES_SMTP_PASSWORD` - AWS SES SMTP password (server-only)
+- `RECEIVER_EMAIL` - Email recipient address (server-only)
 
-No `.env.example` file exists.
+See `.env.example` for a template with descriptions.
 
 ## Code Patterns
 

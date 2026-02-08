@@ -38,7 +38,7 @@ export async function POST(request: Request): Promise<Response> {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       data: new URLSearchParams({
-        secret: process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY as string, // Server-side secret key
+        secret: process.env.RECAPTCHA_SECRET_KEY as string, // Server-side secret key
         response: validatedData.recaptchaToken,
       }).toString(),
     });
@@ -59,8 +59,8 @@ export async function POST(request: Request): Promise<Response> {
       port: 587,
       secure: false,
       auth: {
-        user: process.env.NEXT_PUBLIC_SES_SMTP_USER as string,
-        pass: process.env.NEXT_PUBLIC_SES_SMTP_PASSWORD as string,
+        user: process.env.SES_SMTP_USER as string,
+        pass: process.env.SES_SMTP_PASSWORD as string,
       },
       authMethod: "PLAIN",
     });
@@ -69,7 +69,7 @@ export async function POST(request: Request): Promise<Response> {
     let mailOptions = {
       from: "ajin.sunny@gmail.com",
       replyTo: validatedData.email,
-      to: process.env.NEXT_PUBLIC_RECEIVER_EMAIL as string,
+      to: process.env.RECEIVER_EMAIL as string,
       subject: `Hey Ajin, ${emailPrefix} would like to talk about ${validatedData.subject}`,
       text: validatedData.message,
     };

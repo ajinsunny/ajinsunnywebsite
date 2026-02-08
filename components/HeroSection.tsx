@@ -56,6 +56,7 @@ const HeroSection = () => {
                 src="/profile.webp"
                 alt="Ajin Sunny Profile"
                 fill
+                sizes="(max-width: 768px) 160px, 192px"
                 className="object-cover"
                 priority
               />
